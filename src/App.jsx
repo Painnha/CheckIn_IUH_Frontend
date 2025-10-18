@@ -6,6 +6,7 @@ import Home from './components/Home';
 import ProtectedRoute from './components/ProtectedRoute';
 import ScanQR from './components/ScanQR';
 import Statistics from './components/Statistics';
+import AdminPanel from './components/AdminPanel';
 import Mattran from './components/Mattran';
 import CongDoan from './components/CongDoan';
 import CuuChienBinh from './components/CuuChienBinh';
@@ -41,6 +42,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Statistics />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin-secret-123"
+            element={
+              <ProtectedRoute>
+                <AdminPanel />
               </ProtectedRoute>
             }
           />
