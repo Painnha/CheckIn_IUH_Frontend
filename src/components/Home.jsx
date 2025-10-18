@@ -26,6 +26,14 @@ const Home = () => {
       color: '#667eea',
     },
     {
+      id: 7,
+      title: 'Thống Kê',
+      icon: '📊',
+      isEmoji: true,
+      route: '/statistics',
+      color: '#764ba2',
+    },
+    {
       id: 2,
       title: 'Mặt Trận Tổ Quốc',
       icon: mattranIcon,

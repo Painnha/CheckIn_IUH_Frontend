@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import ProtectedRoute from './components/ProtectedRoute';
 import ScanQR from './components/ScanQR';
+import Statistics from './components/Statistics';
 import Mattran from './components/Mattran';
 import CongDoan from './components/CongDoan';
 import CuuChienBinh from './components/CuuChienBinh';
@@ -32,6 +33,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <ScanQR />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/statistics"
+            element={
+              <ProtectedRoute>
+                <Statistics />
               </ProtectedRoute>
             }
           />
