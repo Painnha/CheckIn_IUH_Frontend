@@ -16,7 +16,9 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     // Kết nối đến backend
-    const newSocket = io(import.meta.env.VITE_API_URL || 'http://localhost:5000', {
+    // VITE_SOCKET_URL là URL backend (không có /api)
+    const socketUrl = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000';
+    const newSocket = io(socketUrl, {
       transports: ['websocket', 'polling']
     });
 
