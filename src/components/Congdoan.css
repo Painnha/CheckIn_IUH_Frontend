@@ -1,0 +1,119 @@
+/* Import font SVN-Futura Black */
+@font-face {
+    font-family: 'SVN-Futura Black';
+    src: url('../assets/font/SVN-Futura Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .congdoan-page {
+    min-height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Background image - scale với màn hình */
+  .congdoan-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    z-index: 0;
+  }
+  
+  /* Text container - scale với màn hình */
+  .congdoan-text-container {
+    position: fixed;
+    top: 5%;
+    right: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+  }
+  
+  /* Text styles - scale với màn hình */
+  .text-line {
+    width: 100%;
+  }
+  
+  .congdoan-welcome-text {
+    font-size: 4vw;
+    color: #1800ad;
+    letter-spacing: -0.05em;
+    font-family: 'SVN-Futura Black', Arial, sans-serif;
+  }
+  
+  .congdoan-title-text {
+    font-size: 3.5vw;
+    color: #c61d23;
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+    letter-spacing: -0.05em;
+    margin-top: 0.8em;
+    margin-bottom: -0.3em;
+    font-family: 'SVN-Futura Black', Arial, sans-serif;
+  
+  }
+  
+  .congdoan-name-text {
+    font-size: 5vw;
+    color: #c61d23;
+    margin-bottom: 2vh;
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+    letter-spacing: -0.05em;
+    font-family: 'SVN-Futura Black', Arial, sans-serif;
+  }
+  
+  .congdoan-position-text {
+    font-size: 2vw;
+    color: #c61d23;
+    margin-bottom: 2vh; 
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+    letter-spacing: -0.05em;
+    font-family: 'SVN-Futura Black', Arial, sans-serif;
+  }
+  
+  .congdoan-attend-text {
+    font-size: 2.5vw;
+    color: #1800ad;
+    margin-bottom: 1vh;
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+    letter-spacing: -0.05em;
+    font-family: 'SVN-Futura Black', Arial, sans-serif;
+  }
+  
+  .congdoan-event-text {
+    font-size: 4vw;
+    color: #c61d23;
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+    letter-spacing: -0.05em;
+    font-family: 'SVN-Futura Black', Arial, sans-serif;
+  }
+  
+  .congdoan-organization-text, .congdoan-period-text {
+    font-size: 2.7vw;
+    color: #c61d23;
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+    font-family: 'SVN-Futura Black', Arial, sans-serif;
+  }
+  
+ 
+  
+  /* Đảm bảo không có margin/padding không mong muốn */
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  

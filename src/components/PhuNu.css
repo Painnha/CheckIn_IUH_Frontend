@@ -1,0 +1,123 @@
+/* Import font SVN-Futura Black */
+@font-face {
+    font-family: 'Pacifico-Regular';
+    src: url('../assets/font/Pacifico-Regular.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .phunu-page {
+    min-height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Background image - scale với màn hình */
+  .phunu-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    z-index: 0;
+  }
+  
+  /* Text container - scale với màn hình */
+  .phunu-text-container {
+    position: fixed;
+    top: 5%;
+    right: 8%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+  }
+  
+  /* Text styles - scale với màn hình */
+  .text-line {
+    width: 100%;
+  }
+  
+  .phunu-welcome-text {
+    font-size: 4vw;
+    color: #1800ad;
+    letter-spacing: -0.05em;
+    font-family: 'Pacifico-Regular', sans-serif;
+    text-shadow: -4px -4px 0 white, 4px -4px 0 white, -4px 4px 0 white, 4px 4px 0 white, -4px 0 0 white, 4px 0 0 white, 0 -4px 0 white, 0 4px 0 white;
+
+  }
+  
+  .phunu-title-text {
+    font-size: 3.5vw;
+    color: #c61d23;
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+    letter-spacing: -0.05em;
+    margin-top: 0.8em;
+    margin-bottom: -0.3em;
+    font-family: 'Open Sans', sans-serif;
+  
+  }
+  
+  .phunu-name-text {
+    font-size: 5vw;
+    color: #c61d23;
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+    letter-spacing: -0.05em;
+    font-family: 'Merriweather', sans-serif;
+    font-weight: 700;
+  }
+  
+  .phunu-position-text {
+    font-size: 2vw;
+    color: #c61d23;
+    margin-bottom: 2vh; 
+    letter-spacing: -0.05em;
+    font-family: 'tahoma', sans-serif;
+    font-weight: 900;
+  }
+  
+  .phunu-attend-text {
+    font-size: 2.5vw;
+    color: #1800ad;
+    margin-bottom: 1vh;
+    /* -webkit-text-stroke: 0.5px white;  */
+    letter-spacing: -0.05em;
+    font-family: 'Pacifico-Regular', Arial, sans-serif;
+    text-shadow: -4px -4px 0 white, 4px -4px 0 white, -4px 4px 0 white, 4px 4px 0 white, -4px 0 0 white, 4px 0 0 white, 0 -4px 0 white, 0 4px 0 white;
+
+  }
+  
+  .phunu-event-text {
+    font-size: 4vw;
+    color: #c61d23;
+    text-shadow: -4px -4px 0 white, 4px -4px 0 white, -4px 4px 0 white, 4px 4px 0 white, -4px 0 0 white, 4px 0 0 white, 0 -4px 0 white, 0 4px 0 white;
+    letter-spacing: -0.05em;
+    font-family: 'Arimo', sans-serif;
+    font-weight: bold;
+  }
+  
+  .phunu-organization-text, .phunu-period-text {
+    font-size: 2.7vw;
+    color: #c61d23;
+    text-shadow: -4px -4px 0 white, 4px -4px 0 white, -4px 4px 0 white, 4px 4px 0 white, -4px 0 0 white, 4px 0 0 white, 0 -4px 0 white, 0 4px 0 white;
+    font-family: 'tahoma', sans-serif;
+    font-weight: bold;
+  }
+  
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  

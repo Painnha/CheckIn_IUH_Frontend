@@ -1,0 +1,200 @@
+.scanqr-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 15px;
+}
+
+.page-header {
+  max-width: 600px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+}
+
+.back-button {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.page-header h1 {
+  color: #333;
+  margin: 0;
+  font-size: 24px;
+}
+
+.scanqr-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.camera-container {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-reader {
+  width: 100%;
+  max-width: 500px;
+}
+
+.camera-placeholder {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.placeholder-icon {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+.camera-placeholder p {
+  color: #666;
+  font-size: 16px;
+  margin: 0;
+}
+
+.error-message {
+  background: #fee;
+  color: #c33;
+  padding: 12px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.loading-message {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.loading-spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-message p {
+  color: #667eea;
+  font-size: 14px;
+  margin: 0;
+}
+
+.success-message {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.success-icon {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.success-message h3 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+}
+
+.button-container {
+  text-align: center;
+}
+
+.scan-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px;
+}
+
+.scan-button.stop {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.scan-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Success message details */
+.scan-name,
+.scan-organization,
+.scan-room {
+  font-size: 14px;
+  margin: 5px 0;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: block;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .scanqr-page {
+    padding: 10px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .page-header h1 {
+    font-size: 20px;
+  }
+
+  .back-button {
+    width: 100%;
+  }
+
+  .camera-container {
+    min-height: 300px;
+    padding: 10px;
+  }
+
+  .placeholder-icon {
+    font-size: 50px;
+  }
+
+  .scan-button {
+    padding: 14px 30px;
+    font-size: 15px;
+  }
+}
+
