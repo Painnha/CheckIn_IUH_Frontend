@@ -7,17 +7,14 @@ import './Mattran.css';
 const Mattran = () => {
   const socket = useSocket();
   const [participant, setParticipant] = useState(null);
-  const [showAllRooms, setShowAllRooms] = useState(false);
 
   useEffect(() => {
     if (!socket) return;
 
-    // Danh sách các room cần join
-    const roomsToJoin = showAllRooms 
-      ? ['mattran', 'congdoan', 'cuuchienbinh', 'doantn', 'phunu']
-      : ['mattran'];
+    // Room Mặt trận luôn join tất cả các room để hiển thị mọi check-in
+    const roomsToJoin = ['mattran', 'congdoan', 'cuuchienbinh', 'doantn', 'phunu'];
 
-    // Join vào các room
+    // Join vào tất cả các room
     roomsToJoin.forEach(room => {
       socket.emit('join-room', room);
       console.log(`Joined room: ${room}`);
@@ -34,32 +31,17 @@ const Mattran = () => {
 
     return () => {
       socket.off('welcome', handleWelcome);
-      // Leave tất cả các room đã join
+      // Leave tất cả các room
       roomsToJoin.forEach(room => {
         socket.emit('leave-room', room);
       });
     };
-  }, [socket, showAllRooms]);
-
-  const toggleAllRooms = () => {
-    setShowAllRooms(!showAllRooms);
-  };
+  }, [socket]);
 
   return (
     <div className="mattran-page">
       <img src={backgroundImage} alt="Background" className="mattran-background" />
       <HomeButton />
-      
-      {/* Toggle button hiển thị tất cả room */}
-      <div 
-        className={`toggle-all-rooms ${showAllRooms ? 'active' : ''}`}
-        onClick={toggleAllRooms}
-        title={showAllRooms ? 'Hiển thị tất cả các room' : 'Chỉ hiển thị Mặt trận'}
-      >
-        <div className="toggle-icon">
-          {showAllRooms ? '●' : '○'}
-        </div>
-      </div>
 
       <div className="mattran-text-container">
         <div className="text-line mattran-welcome-text">CHÀO MỪNG</div>
