@@ -370,6 +370,79 @@
   }
 } */
 
+/* Toggle button hiển thị tất cả room - style giống HomeButton */
+.toggle-all-rooms {
+  position: fixed;
+  top: 20px;
+  left: 80px; /* Cạnh nút Home (50px width + 20px left + 10px spacing) */
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.toggle-all-rooms:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.toggle-all-rooms.active {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.toggle-icon {
+  font-size: 28px;
+  opacity: 0.15;
+  color: white;
+  transition: opacity 0.3s ease;
+  font-family: 'Courier New', monospace;
+}
+
+.toggle-all-rooms:hover .toggle-icon {
+  opacity: 0.3;
+}
+
+.toggle-all-rooms.active .toggle-icon {
+  opacity: 0.4;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+  .toggle-all-rooms {
+    top: 15px;
+    left: 70px;
+    width: 45px;
+    height: 45px;
+  }
+
+  .toggle-icon {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .toggle-all-rooms {
+    top: 10px;
+    left: 60px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .toggle-icon {
+    font-size: 20px;
+  }
+}
+
 /* Đảm bảo không có margin/padding không mong muốn */
 * {
   box-sizing: border-box;

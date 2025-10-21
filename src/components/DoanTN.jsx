@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import backgroundImage from '../assets/backgroundDTN.png';
 import HomeButton from './HomeButton';
 import { useSocket } from '../context/SocketContext';
@@ -7,9 +7,6 @@ import './DoanTN.css';
 const DoanTN = () => {
   const socket = useSocket();
   const [participant, setParticipant] = useState(null);
-  const queueRef = useRef([]);
-  const timeoutRef = useRef(null);
-  const isDisplayingRef = useRef(false);
 
   useEffect(() => {
     if (!socket) return;
@@ -18,34 +15,11 @@ const DoanTN = () => {
     socket.emit('join-room', 'doantn');
     console.log('Joined room: doantn');
 
-    // Hàm hiển thị participant tiếp theo
-    const showNextParticipant = () => {
-      if (queueRef.current.length === 0) {
-        isDisplayingRef.current = false;
-        return;
-      }
-
-      const nextParticipant = queueRef.current.shift();
-      setParticipant(nextParticipant);
-      isDisplayingRef.current = true;
-
-      // Sau 10 giây, chuyển sang người tiếp theo
-      timeoutRef.current = setTimeout(() => {
-        showNextParticipant();
-      }, 10000);
-    };
-
     // Lắng nghe event welcome
     const handleWelcome = (data) => {
       console.log('Welcome event received:', data);
-      
-      // Thêm vào hàng đợi
-      queueRef.current.push(data);
-      
-      // Nếu không có người nào đang hiển thị, hiển thị ngay
-      if (!isDisplayingRef.current) {
-        showNextParticipant();
-      }
+      // Hiển thị ngay lập tức
+      setParticipant(data);
     };
 
     socket.on('welcome', handleWelcome);
@@ -53,9 +27,6 @@ const DoanTN = () => {
     return () => {
       socket.off('welcome', handleWelcome);
       socket.emit('leave-room', 'doantn');
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
     };
   }, [socket]);
 
@@ -66,7 +37,7 @@ const DoanTN = () => {
 
       <div className="doantn-text-container">
         <div className="text-line doantn-welcome-text">Chào mừng</div>
-        <div className="text-line doantn-title-text">Đồng chí</div>
+        <div className="text-line doantn-title-text">Đại biểu</div>
         <div className="text-line doantn-name-text">
           {participant ? participant.name : 'Đang chờ...'}
         </div>

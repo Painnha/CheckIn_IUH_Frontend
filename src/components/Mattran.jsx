@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import backgroundImage from '../assets/backgroundMT.png';
 import HomeButton from './HomeButton';
 import { useSocket } from '../context/SocketContext';
@@ -7,66 +7,63 @@ import './Mattran.css';
 const Mattran = () => {
   const socket = useSocket();
   const [participant, setParticipant] = useState(null);
-  const queueRef = useRef([]);
-  const timeoutRef = useRef(null);
-  const isDisplayingRef = useRef(false);
+  const [showAllRooms, setShowAllRooms] = useState(false);
 
   useEffect(() => {
     if (!socket) return;
 
-    // Join vào room mattran
-    socket.emit('join-room', 'mattran');
-    console.log('Joined room: mattran');
+    // Danh sách các room cần join
+    const roomsToJoin = showAllRooms 
+      ? ['mattran', 'congdoan', 'cuuchienbinh', 'doantn', 'phunu']
+      : ['mattran'];
 
-    // Hàm hiển thị participant tiếp theo
-    const showNextParticipant = () => {
-      if (queueRef.current.length === 0) {
-        isDisplayingRef.current = false;
-        return;
-      }
-
-      const nextParticipant = queueRef.current.shift();
-      setParticipant(nextParticipant);
-      isDisplayingRef.current = true;
-
-      // Sau 10 giây, chuyển sang người tiếp theo
-      timeoutRef.current = setTimeout(() => {
-        showNextParticipant();
-      }, 10000);
-    };
+    // Join vào các room
+    roomsToJoin.forEach(room => {
+      socket.emit('join-room', room);
+      console.log(`Joined room: ${room}`);
+    });
 
     // Lắng nghe event welcome
     const handleWelcome = (data) => {
       console.log('Welcome event received:', data);
-      
-      // Thêm vào hàng đợi
-      queueRef.current.push(data);
-      
-      // Nếu không có người nào đang hiển thị, hiển thị ngay
-      if (!isDisplayingRef.current) {
-        showNextParticipant();
-      }
+      // Hiển thị ngay lập tức
+      setParticipant(data);
     };
 
     socket.on('welcome', handleWelcome);
 
     return () => {
       socket.off('welcome', handleWelcome);
-      socket.emit('leave-room', 'mattran');
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
+      // Leave tất cả các room đã join
+      roomsToJoin.forEach(room => {
+        socket.emit('leave-room', room);
+      });
     };
-  }, [socket]);
+  }, [socket, showAllRooms]);
+
+  const toggleAllRooms = () => {
+    setShowAllRooms(!showAllRooms);
+  };
 
   return (
     <div className="mattran-page">
       <img src={backgroundImage} alt="Background" className="mattran-background" />
       <HomeButton />
+      
+      {/* Toggle button hiển thị tất cả room */}
+      <div 
+        className={`toggle-all-rooms ${showAllRooms ? 'active' : ''}`}
+        onClick={toggleAllRooms}
+        title={showAllRooms ? 'Hiển thị tất cả các room' : 'Chỉ hiển thị Mặt trận'}
+      >
+        <div className="toggle-icon">
+          {showAllRooms ? '●' : '○'}
+        </div>
+      </div>
 
       <div className="mattran-text-container">
         <div className="text-line mattran-welcome-text">CHÀO MỪNG</div>
-        <div className="text-line mattran-title-text">Đồng chí</div>
+        <div className="text-line mattran-title-text">Đại biểu</div>
         <div className="text-line mattran-name-text">
           {participant ? participant.name : 'Đang chờ...'}
         </div>
